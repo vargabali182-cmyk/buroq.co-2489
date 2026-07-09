@@ -1,5 +1,4 @@
 import { motion, useReducedMotion } from "motion/react";
-import { ProductVisual } from "./product-visual";
 
 export function ProductReveal() {
   const reduceMotion = useReducedMotion();
@@ -24,7 +23,7 @@ export function ProductReveal() {
         </motion.div>
 
         <motion.div initial={reduceMotion ? false : { opacity: 0, y: 24, scale: 0.97 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.9 }} className="rounded-[40px] border border-black/8 bg-white/70 p-6 shadow-[0_28px_100px_rgba(17,24,39,0.12)] backdrop-blur-xl sm:p-8">
-          <ProductVisual />
+          <img src="/umbrellas/aetro-blue-beach-closeup.png" alt="AETRO Lite umbrella close-up" className="w-full rounded-[28px] object-cover" />
         </motion.div>
       </div>
     </section>

@@ -1,6 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowRight, Play } from "lucide-react";
-import { ProductVisual } from "./product-visual";
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
@@ -36,8 +35,10 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <div className="relative mx-auto lg:mr-0">
-          <ProductVisual variant="dark" />
+        <div className="relative mx-auto flex w-full max-w-[520px] items-center justify-center lg:mr-0">
+          <div className="relative w-full overflow-hidden rounded-[40px] border border-white/10 bg-white/8 p-4 shadow-[0_30px_100px_rgba(0,0,0,0.28)] backdrop-blur-xl">
+            <img src="/umbrellas/aetro-pink-beach-closeup.png" alt="AETRO Lite umbrella on the beach" className="w-full rounded-[28px] object-cover" />
+          </div>
         </div>
       </motion.div>
     </section>

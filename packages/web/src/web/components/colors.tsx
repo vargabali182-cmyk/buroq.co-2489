@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { ProductVisual } from "./product-visual";
 
 const LAUNCH_COLORS = [
-  { name: "Rose / Pink", short: "Rose", accent: "#F4A9BC", canopy: "linear-gradient(135deg,#FCE3EA 0%,#F4A9BC 100%)", note: "Soft beachside warmth" },
-  { name: "Sage / Green", short: "Sage", accent: "#A9C79A", canopy: "linear-gradient(135deg,#F0F4E7 0%,#A9C79A 100%)", note: "Calm, coastal freshness" },
-  { name: "Sky / Blue", short: "Sky", accent: "#A7C6E8", canopy: "linear-gradient(135deg,#EFF7FF 0%,#A7C6E8 100%)", note: "Clear Mediterranean sky" },
-  { name: "Lavender / Purple", short: "Lavender", accent: "#C6B3DE", canopy: "linear-gradient(135deg,#F7F0FE 0%,#C6B3DE 100%)", note: "Quiet premium contrast" },
+  { name: "Rose", short: "Rose", accent: "#F4A9BC", image: "/umbrellas/aetro-lite-01-rose.png", note: "Soft beachside warmth" },
+  { name: "Sage", short: "Sage", accent: "#A9C79A", image: "/umbrellas/aetro-lite-02-sage.png", note: "Calm coastal freshness" },
+  { name: "Sky", short: "Sky", accent: "#A7C6E8", image: "/umbrellas/aetro-lite-03-sky.png", note: "Clear Mediterranean sky" },
+  { name: "Lavender", short: "Lavender", accent: "#C6B3DE", image: "/umbrellas/aetro-lite-04-lavender.png", note: "Quiet premium contrast" },
 ];
 
 const BASE_OPTIONS = [
@@ -53,7 +52,9 @@ export function Colors() {
                 Shade. Power. Nothing extra.
               </div>
             </div>
-            <ProductVisual accentColor={selectedColor.accent} canopyColor={selectedColor.canopy} />
+            <div className="flex items-center justify-center rounded-[32px] border border-black/8 bg-[#f8f5ef] p-4 sm:p-6">
+              <img src={selectedColor.image} alt={`${selectedColor.name} AETRO Lite umbrella`} className="w-full max-w-[420px] object-contain" />
+            </div>
           </motion.div>
 
           <div className="space-y-6">
@@ -74,7 +75,7 @@ export function Colors() {
                   return (
                     <button key={color.name} type="button" onClick={() => setSelectedColor(color)} className={`rounded-[24px] border px-4 py-4 text-left transition-all ${isSelected ? "border-[#1d1d1f] bg-[#111827] text-white shadow-[0_12px_30px_rgba(17,24,39,0.14)]" : "border-black/8 bg-[#faf8f3] text-[#1d1d1f] hover:border-black/16"}`}>
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-full border border-black/10" style={{ background: color.canopy }} />
+                        <div className="h-10 w-10 rounded-full border border-black/10" style={{ background: color.accent }} />
                         <div>
                           <p className="text-sm font-semibold">{color.short}</p>
                           <p className={`mt-1 text-xs ${isSelected ? "text-white/70" : "text-[#6e6e73]"}`}>{color.note}</p>
