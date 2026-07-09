@@ -1,4 +1,5 @@
-import { motion } from "motion/react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
 const COLORS = [
   { name: "Pink", file: "pink_nobg.png", hex: "#F4A9BC" },
@@ -12,58 +13,131 @@ const COLORS = [
 ];
 
 export function Colors() {
+  const [selected, setSelected] = useState(2);
+  const color = COLORS[selected];
+
   return (
-    <section id="colors" className="relative mesh-sand py-28">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="colors" className="relative mesh-sand overflow-hidden py-28">
+      <motion.div
+        className="pointer-events-none absolute left-1/2 top-24 h-96 w-96 -translate-x-1/2 rounded-full blur-[120px]"
+        style={{ backgroundColor: color.hex }}
+        animate={{ scale: [1, 1.2, 1], opacity: [0.25, 0.45, 0.25] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
           className="mx-auto max-w-xl text-center"
         >
-          <h2 className="font-display text-4xl text-[var(--navy)] sm:text-5xl">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--navy)]/45">
+            Colorways
+          </p>
+
+          <h2 className="font-display text-4xl text-[var(--navy)] sm:text-5xl md:text-6xl">
             Choose your shade.
           </h2>
-          <p className="mt-4 text-[var(--navy)]/60">
+
+          <p className="mt-5 text-[var(--navy)]/60">
             Eight vibrant colorways, each with a perfectly matched pole.
           </p>
         </motion.div>
 
-        <div className="mt-16 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
-          {COLORS.map((c, i) => (
+        <div className="mt-16 grid items-center gap-12 md:grid-cols-[1fr_420px]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: 30 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative flex min-h-[420px] items-center justify-center rounded-[2.5rem] border border-white/50 bg-white/45 p-10 shadow-[0_20px_70px_rgba(11,27,43,0.10)] backdrop-blur"
+            style={{
+              background: `linear-gradient(160deg, ${color.hex}33 0%, #ffffffcc 72%)`,
+            }}
+          >
             <motion.div
-              key={c.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: (i % 4) * 0.08 }}
-              className="group relative overflow-hidden rounded-3xl p-6 shadow-[0_8px_30px_rgba(11,27,43,0.06)] transition-all hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(11,27,43,0.15)]"
-              style={{
-                background: `linear-gradient(160deg, ${c.hex}33 0%, #ffffffcc 65%)`,
-                border: `1px solid ${c.hex}55`,
-              }}
-            >
-              <div
-                className="absolute -right-8 -top-8 h-28 w-28 rounded-full opacity-30 blur-2xl transition-opacity group-hover:opacity-60"
-                style={{ backgroundColor: c.hex }}
+              className="absolute inset-10 rounded-full blur-3xl"
+              style={{ backgroundColor: color.hex }}
+              animate={{ scale: [1, 1.08, 1], opacity: [0.25, 0.45, 0.25] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={color.file}
+                src={`/umbrellas/${color.file}`}
+                alt={`AETRO Lite in ${color.name}`}
+                initial={{ opacity: 0, y: 30, scale: 0.96 }}
+                animate={{ opacity: 1, y: [0, -12, 0], scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.96 }}
+                transition={{
+                  opacity: { duration: 0.35 },
+                  scale: { duration: 0.35 },
+                  y: {
+                    duration: 4.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                }}
+                whileHover={{ scale: 1.04, rotate: 1.5 }}
+                className="relative z-10 h-[330px] w-auto object-contain drop-shadow-[0_35px_45px_rgba(0,0,0,0.22)] sm:h-[400px]"
               />
-              <img
-                src={`/umbrellas/${c.file}`}
-                alt={`AETRO Lite in ${c.name}`}
-                className="relative z-10 mx-auto h-36 w-auto object-contain drop-shadow-[0_15px_20px_rgba(0,0,0,0.15)] transition-transform group-hover:scale-105 sm:h-44"
+            </AnimatePresence>
+          </motion.div>
+
+          <motion.div
+            key={color.name}
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.35 }}
+            className="rounded-[2rem] border border-white/60 bg-white/55 p-7 shadow-[0_20px_60px_rgba(11,27,43,0.08)] backdrop-blur"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--navy)]/40">
+              Selected color
+            </p>
+
+            <div className="mt-5 flex items-center gap-4">
+              <span
+                className="h-12 w-12 rounded-full shadow-inner ring-4 ring-white"
+                style={{ backgroundColor: color.hex }}
               />
-              <div className="relative z-10 mt-4 flex items-center justify-center gap-2">
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: c.hex }}
-                />
-                <span className="font-display text-lg text-[var(--navy)]">
-                  {c.name}
-                </span>
+              <div>
+                <h3 className="font-display text-4xl text-[var(--navy)]">
+                  {color.name}
+                </h3>
+                <p className="mt-1 text-sm text-[var(--navy)]/45">
+                  Matched canopy and pole finish
+                </p>
               </div>
-            </motion.div>
-          ))}
+            </div>
+
+            <div className="mt-8 grid grid-cols-4 gap-3">
+              {COLORS.map((c, i) => (
+                <motion.button
+                  key={c.name}
+                  type="button"
+                  onClick={() => setSelected(i)}
+                  whileHover={{ y: -4, scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`relative overflow-hidden rounded-2xl p-3 text-center transition-all ${
+                    selected === i
+                      ? "bg-[var(--navy)] text-white shadow-xl"
+                      : "bg-white/70 text-[var(--navy)]/60 hover:bg-white"
+                  }`}
+                >
+                  <span
+                    className="mx-auto block h-8 w-8 rounded-full ring-2 ring-white"
+                    style={{ backgroundColor: c.hex }}
+                  />
+                  <span className="mt-2 block text-[10px] font-semibold">
+                    {c.name}
+                  </span>
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
