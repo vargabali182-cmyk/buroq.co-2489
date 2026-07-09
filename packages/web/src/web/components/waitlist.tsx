@@ -1,212 +1,80 @@
 import { useState, type FormEvent } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { motion, AnimatePresence } from "motion/react";
-import { CheckCircle2, Loader2, Mail, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { ArrowRight, CheckCircle2, Loader2, Mail } from "lucide-react";
 
 export function Waitlist() {
   const [email, setEmail] = useState("");
+  const [price, setPrice] = useState("199€");
+  const reduceMotion = useReducedMotion();
 
   const join = useMutation({
-    mutationFn: async (email: string) => {
+    mutationFn: async ({ email, price }: { email: string; price: string }) => {
       const res = await fetch("https://formspree.io/f/mgojjnbr", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          project: "BUROQ / AETRO Lite waitlist",
-        }),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ email, price_interest: price, project: "BUROQ / AETRO Lite waitlist" }),
       });
-
       if (!res.ok) throw new Error("Failed");
       return res.json();
     },
-    onSuccess: () => {
-      setEmail("");
-    },
+    onSuccess: () => setEmail(""),
   });
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    join.mutate(email);
+    join.mutate({ email, price });
   };
 
   return (
-    <section id="waitlist" className="relative mesh-sand overflow-hidden py-28">
-      <motion.div
-        className="pointer-events-none absolute left-1/2 top-16 h-96 w-96 -translate-x-1/2 rounded-full bg-[var(--c-turquoise)]/20 blur-[120px]"
-        animate={{ scale: [1, 1.22, 1], opacity: [0.35, 0.65, 0.35] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <div className="relative mx-auto max-w-4xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 28, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.75, ease: "easeOut" }}
-          className="relative overflow-hidden rounded-[2.5rem] px-8 py-14 text-center shadow-[0_25px_80px_rgba(11,27,43,0.16)] sm:px-16"
-          style={{
-            background:
-              "linear-gradient(150deg, var(--navy) 0%, var(--navy-deep) 100%)",
-          }}
-        >
-          <motion.div
-            className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-[var(--c-turquoise)]/25 blur-[90px]"
-            animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.15, 1] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          />
-
-          <motion.div
-            className="pointer-events-none absolute -right-16 -bottom-16 h-64 w-64 rounded-full bg-[var(--c-pink)]/25 blur-[90px]"
-            animate={{ x: [0, -30, 0], y: [0, 20, 0], scale: [1, 1.15, 1] }}
-            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-          />
-
-          <div className="relative">
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55, delay: 0.1 }}
-              className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-white/35"
-            >
-              Early access
-            </motion.p>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.18 }}
-              className="font-display text-3xl text-gradient-sand sm:text-4xl md:text-5xl"
-            >
-              Be first to experience
-              <br className="hidden sm:block" /> AETRO Lite.
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.28 }}
-              className="mx-auto mt-5 max-w-md text-white/60"
-            >
-              We are building the first version now. Join the waitlist to
-              follow prototypes, launch updates and early access.
-            </motion.p>
+    <section id="waitlist" className="bg-[#f5f5f7] px-6 py-24 sm:py-32 lg:px-10">
+      <motion.div initial={reduceMotion ? false : { opacity: 0, y: 40 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="mx-auto max-w-5xl overflow-hidden rounded-[44px] bg-[#1d1d1f] text-white shadow-[0_40px_140px_rgba(0,0,0,0.22)]">
+        <div className="grid gap-0 lg:grid-cols-[1fr_0.86fr]">
+          <div className="p-8 sm:p-12 lg:p-14">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/42">Early access</p>
+            <h2 className="mt-5 text-[clamp(42px,7vw,82px)] font-semibold leading-[0.94] tracking-[-0.06em]">Help shape the first prototype.</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/60">Join the waitlist and tell us the price point where AETRO Lite becomes interesting. This turns the page from decoration into validation.</p>
 
             <AnimatePresence mode="wait">
               {join.isSuccess ? (
-                <motion.div
-                  key="success"
-                  initial={{ opacity: 0, y: 20, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -12, scale: 0.96 }}
-                  transition={{ duration: 0.35 }}
-                  className="mx-auto mt-9 flex max-w-md items-center justify-center gap-3 rounded-full border border-[var(--c-turquoise)]/30 bg-[var(--c-turquoise)]/10 px-5 py-4 text-[var(--c-turquoise)]"
-                >
-                  <CheckCircle2 size={20} />
-                  <span className="font-medium">
-                    You're on the list — we'll be in touch.
-                  </span>
+                <motion.div key="success" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} className="mt-9 flex items-center gap-3 rounded-[24px] bg-white px-5 py-4 text-[#1d1d1f]">
+                  <CheckCircle2 size={20} /> You're on the list — we will send prototype updates.
                 </motion.div>
               ) : (
-                <motion.form
-                  key="form"
-                  onSubmit={handleSubmit}
-                  initial={{ opacity: 0, y: 22 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.38 }}
-                  className="mx-auto mt-9 flex max-w-md flex-col gap-3 sm:flex-row"
-                >
-                  <div className="relative flex-1">
-                    <Mail
-                      size={16}
-                      className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-white/40"
-                    />
-
-                    <input
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email"
-                      className="glass w-full rounded-full py-3.5 pl-11 pr-4 text-sm text-white placeholder:text-white/40 outline-none transition-all focus:ring-2 focus:ring-white/30"
-                    />
+                <motion.form key="form" onSubmit={handleSubmit} className="mt-9 space-y-4" initial={false}>
+                  <div className="relative">
+                    <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-white/36" size={18} />
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required placeholder="Enter your email" className="w-full rounded-full border border-white/12 bg-white/8 py-4 pl-12 pr-5 text-sm text-white outline-none backdrop-blur-xl placeholder:text-white/36 focus:border-white/32" />
                   </div>
-
-                  <motion.button
-                    type="submit"
-                    disabled={join.isPending}
-                    whileHover={{ scale: join.isPending ? 1 : 1.05 }}
-                    whileTap={{ scale: join.isPending ? 1 : 0.96 }}
-                    className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy)] transition-colors hover:bg-[var(--c-turquoise)] disabled:opacity-60"
-                  >
-                    {join.isPending ? (
-                      <>
-                        <Loader2 size={16} className="animate-spin" />
-                        Joining...
-                      </>
-                    ) : (
-                      <>
-                        Join
-                        <ArrowRight
-                          size={16}
-                          className="transition-transform group-hover:translate-x-1"
-                        />
-                      </>
-                    )}
-                  </motion.button>
+                  <div className="grid grid-cols-4 gap-2">
+                    {["149€", "199€", "249€", "B2B"].map((item) => (
+                      <button key={item} type="button" onClick={() => setPrice(item)} className={`rounded-full px-3 py-3 text-xs font-semibold transition-colors ${price === item ? "bg-white text-[#1d1d1f]" : "bg-white/8 text-white/52 hover:bg-white/12 hover:text-white"}`}>{item}</button>
+                    ))}
+                  </div>
+                  <button type="submit" disabled={join.isPending} className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-sm font-semibold text-[#1d1d1f] transition-transform hover:-translate-y-0.5 disabled:opacity-60 sm:w-auto">
+                    {join.isPending ? <><Loader2 className="animate-spin" size={16} /> Joining...</> : <>Join waitlist <ArrowRight size={16} /></>}
+                  </button>
+                  {join.isError && <p className="text-sm text-red-200">Something went wrong. Please try again.</p>}
                 </motion.form>
               )}
             </AnimatePresence>
-
-            {join.isError && (
-              <motion.p
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-4 text-xs text-[var(--c-red)]"
-              >
-                Something went wrong. Please try again.
-              </motion.p>
-            )}
-
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="mx-auto mt-10 grid max-w-lg grid-cols-3 gap-3 text-center"
-            >
-              <div className="rounded-2xl bg-white/7 px-3 py-4">
-                <div className="font-display text-xl text-white">Prototype</div>
-                <div className="mt-1 text-[10px] uppercase tracking-wide text-white/35">
-                  in progress
-                </div>
-              </div>
-
-              <div className="rounded-2xl bg-white/7 px-3 py-4">
-                <div className="font-display text-xl text-white">Lite</div>
-                <div className="mt-1 text-[10px] uppercase tracking-wide text-white/35">
-                  first model
-                </div>
-              </div>
-
-              <div className="rounded-2xl bg-white/7 px-3 py-4">
-                <div className="font-display text-xl text-white">BUROQ</div>
-                <div className="mt-1 text-[10px] uppercase tracking-wide text-white/35">
-                  launching soon
-                </div>
-              </div>
-            </motion.div>
           </div>
-        </motion.div>
-      </div>
+
+          <div className="relative min-h-[420px] bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.20),transparent_34%),linear-gradient(180deg,#2c2c2f,#111)] p-8">
+            <div className="absolute left-1/2 top-14 h-32 w-[70%] -translate-x-1/2 rounded-t-[999px] rounded-b-[44px] bg-[#f4eee5] shadow-[0_30px_90px_rgba(255,255,255,0.12)]" />
+            <div className="absolute left-1/2 top-32 h-60 w-9 -translate-x-1/2 rounded-full bg-[linear-gradient(90deg,#cfd2d8,#fff,#8d929b)]" />
+            <div className="absolute bottom-10 left-8 right-8 rounded-[28px] border border-white/12 bg-white/8 p-5 backdrop-blur-xl">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-white/38">Prototype target</p>
+              <div className="mt-4 grid grid-cols-3 gap-3 text-center">
+                <div><p className="text-2xl font-semibold">20k</p><p className="text-xs text-white/40">mAh</p></div>
+                <div><p className="text-2xl font-semibold">3</p><p className="text-xs text-white/40">ports</p></div>
+                <div><p className="text-2xl font-semibold">Lite</p><p className="text-xs text-white/40">MVP</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,13 +1,12 @@
 export function Footer() {
   return (
-    <footer className="relative mesh-navy border-t border-white/10 py-14">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 text-center">
-        <div className="font-display text-2xl text-white">BUROQ</div>
-        <p className="text-sm text-white/50">Outdoor comfort, reimagined.</p>
-        <p className="text-xs uppercase tracking-widest text-white/30">
-          AETRO Lite — Coming soon
-        </p>
-        <p className="text-xs text-white/30">buroq.co</p>
+    <footer className="bg-[#f5f5f7] px-6 pb-10 lg:px-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-4 border-t border-black/10 pt-8 text-sm text-[#6e6e73] sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="font-semibold text-[#1d1d1f]">BUROQ</p>
+          <p>AETRO Lite — premium beach umbrella with built-in charging.</p>
+        </div>
+        <p>buroq.co</p>
       </div>
     </footer>
   );

@@ -1,180 +1,57 @@
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 const HOTSPOTS = [
-  {
-    label: "Premium canopy",
-    description: "Durable shade fabric designed for clean summer aesthetics.",
-    top: "6%",
-    left: "50%",
-  },
-  {
-    label: "Built-in battery",
-    description: "Integrated power source hidden inside the umbrella body.",
-    top: "46%",
-    left: "8%",
-  },
-  {
-    label: "USB-C / USB-A charging",
-    description: "Charge your phone and small devices directly from the pole.",
-    top: "58%",
-    left: "92%",
-  },
-  {
-    label: "Smart display",
-    description: "Battery and temperature information at a glance.",
-    top: "44%",
-    left: "88%",
-  },
-  {
-    label: "Matching colored pole",
-    description: "A clean premium look with coordinated color options.",
-    top: "80%",
-    left: "12%",
-  },
+  { label: "Front display", description: "Flush black vertical display: battery percentage and temperature only.", top: "39%", left: "54%" },
+  { label: "Power button", description: "One physical button keeps Lite simple and intuitive.", top: "56%", left: "54%" },
+  { label: "Rear USB panel", description: "Three ports are placed on the back as a clean mirror of the display side.", top: "45%", left: "74%" },
+  { label: "Removable battery", description: "Lower-pole module for better weight balance, serviceability and thermal control.", top: "69%", left: "45%" },
 ];
 
 export function Showcase() {
   const [active, setActive] = useState(0);
+  const reduceMotion = useReducedMotion();
   const activeHotspot = HOTSPOTS[active];
 
   return (
-    <section id="product" className="relative mesh-navy overflow-hidden py-28">
-      <motion.div
-        className="pointer-events-none absolute right-0 top-1/4 h-96 w-96 rounded-full bg-[var(--c-turquoise)]/15 blur-[120px]"
-        animate={{ x: [0, -40, 0], y: [0, 30, 0], scale: [1, 1.18, 1] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-      />
+    <section id="engineering" className="relative overflow-hidden bg-[#050608] px-6 py-24 text-white sm:py-32 lg:px-10">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.14),transparent_32%),radial-gradient(circle_at_20%_80%,rgba(159,220,207,0.13),transparent_28%)]" />
+      <div className="relative mx-auto max-w-7xl">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/48">Engineering layout</p>
+          <h2 className="mt-5 text-[clamp(42px,6.7vw,94px)] font-semibold leading-[0.95] tracking-[-0.065em]">Designed around the pole.</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/58">The product should feel like one object, not an umbrella with electronics glued to it.</p>
+        </div>
 
-      <motion.div
-        className="pointer-events-none absolute left-0 bottom-0 h-80 w-80 rounded-full bg-[var(--c-pink)]/15 blur-[120px]"
-        animate={{ x: [0, 35, 0], y: [0, -30, 0], scale: [1, 1.12, 1] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
+        <div className="mt-16 grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative min-h-[620px] rounded-[44px] border border-white/10 bg-white/[0.04] p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_40px_120px_rgba(0,0,0,0.4)] backdrop-blur-xl">
+            <div className="absolute left-1/2 top-12 h-40 w-[78%] -translate-x-1/2 rounded-t-[999px] rounded-b-[64px] bg-[linear-gradient(135deg,#f7f1e8,#d9d2c6)] shadow-[0_30px_90px_rgba(255,255,255,0.12)]" />
+            <div className="absolute left-1/2 top-40 h-[410px] w-12 -translate-x-1/2 rounded-full bg-[linear-gradient(90deg,#cfd2d8,#fff,#8d929b)] shadow-[0_30px_80px_rgba(0,0,0,0.55)]" />
+            <div className="absolute left-1/2 top-[260px] h-44 w-8 -translate-x-1/2 rounded-full bg-black p-1">
+              <div className="flex h-full flex-col items-center justify-center gap-3 rounded-full bg-[#08111d] text-xs font-bold">
+                <span className="text-white/50">BAT</span>
+                <span>75%</span>
+                <span className="h-px w-4 bg-white/20" />
+                <span>24°</span>
+              </div>
+            </div>
+            <div className="absolute left-1/2 top-[455px] h-8 w-8 -translate-x-1/2 rounded-full bg-[#111] ring-1 ring-white/25" />
 
-      <div className="relative mx-auto max-w-6xl px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-        >
-          <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium tracking-wide text-white/70">
-            Product reveal
+            {HOTSPOTS.map((spot, index) => (
+              <motion.button key={spot.label} onMouseEnter={() => setActive(index)} onFocus={() => setActive(index)} onClick={() => setActive(index)} whileHover={reduceMotion ? undefined : { scale: 1.08 }} className="absolute z-20 flex items-center gap-2" style={{ top: spot.top, left: spot.left, transform: "translate(-50%, -50%)" }}>
+                <span className={`h-4 w-4 rounded-full border border-white/80 ${active === index ? "bg-white" : "bg-white/35"}`} />
+                <span className={`hidden rounded-full px-3 py-1.5 text-xs font-semibold backdrop-blur-xl sm:inline ${active === index ? "bg-white text-[#1d1d1f]" : "bg-white/10 text-white/70"}`}>{spot.label}</span>
+              </motion.button>
+            ))}
           </div>
 
-          <h2 className="mt-6 font-display text-4xl text-gradient-sand sm:text-5xl md:text-6xl">
-            Every detail, engineered
-            <br />
-            for the beach.
-          </h2>
-
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/55">
-            Explore the key details of AETRO Lite — from built-in power to the
-            clean display and premium color-matched design.
-          </p>
-        </motion.div>
-
-        <div className="mt-20 grid items-center gap-14 md:grid-cols-[1fr_320px]">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.94, y: 30 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.85, ease: "easeOut" }}
-            className="relative mx-auto flex w-full max-w-2xl justify-center"
-          >
-            <motion.div
-              animate={{ y: [0, -14, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="relative"
-            >
-              <motion.div
-                className="absolute inset-0 -z-10 rounded-full bg-[var(--c-blue)]/20 blur-3xl"
-                animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.9, 0.5] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              />
-
-              <motion.img
-                src="/umbrellas/turquoise_nobg.png"
-                alt="AETRO Lite product detail showcase"
-                className="relative z-10 w-[260px] drop-shadow-[0_50px_70px_rgba(0,0,0,0.5)] sm:w-[340px] md:w-[420px]"
-                whileHover={{ scale: 1.04, rotate: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-
-              {HOTSPOTS.map((h, i) => (
-                <motion.button
-                  key={h.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: 0.55 + i * 0.12 }}
-                  onMouseEnter={() => setActive(i)}
-                  onFocus={() => setActive(i)}
-                  onClick={() => setActive(i)}
-                  whileHover={{ scale: 1.08 }}
-                  className="absolute z-20 flex items-center gap-2"
-                  style={{
-                    top: h.top,
-                    left: h.left,
-                    transform: "translate(-50%, -50%)",
-                  }}
-                >
-                  <span className="relative flex h-3 w-3">
-                    <span className="pulse-dot absolute inline-flex h-full w-full rounded-full bg-white/80" />
-                    <span
-                      className={`relative inline-flex h-3 w-3 rounded-full ${
-                        active === i ? "bg-[var(--c-turquoise)]" : "bg-white"
-                      }`}
-                    />
-                  </span>
-
-                  <span
-                    className={`glass whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium shadow-lg transition-all ${
-                      active === i
-                        ? "text-white ring-1 ring-white/30"
-                        : "text-white/75"
-                    }`}
-                  >
-                    {h.label}
-                  </span>
-                </motion.button>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            key={activeHotspot.label}
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.35 }}
-            className="glass rounded-[2rem] p-7 text-left shadow-2xl"
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/40">
-              Selected detail
-            </p>
-
-            <h3 className="mt-4 font-display text-3xl text-white">
-              {activeHotspot.label}
-            </h3>
-
-            <p className="mt-4 text-sm leading-relaxed text-white/60">
-              {activeHotspot.description}
-            </p>
-
+          <motion.div key={activeHotspot.label} initial={reduceMotion ? false : { opacity: 0, y: 20 }} animate={reduceMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.45 }} className="rounded-[40px] border border-white/10 bg-white/[0.06] p-8 backdrop-blur-2xl sm:p-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/42">Selected detail</p>
+            <h3 className="mt-5 text-4xl font-semibold tracking-[-0.055em] sm:text-6xl">{activeHotspot.label}</h3>
+            <p className="mt-6 text-lg leading-8 text-white/62">{activeHotspot.description}</p>
             <div className="mt-8 grid grid-cols-2 gap-3">
-              {HOTSPOTS.map((h, i) => (
-                <button
-                  key={h.label}
-                  onClick={() => setActive(i)}
-                  className={`rounded-2xl px-4 py-3 text-left text-xs font-medium transition-all ${
-                    active === i
-                      ? "bg-white text-[var(--navy)]"
-                      : "bg-white/10 text-white/60 hover:bg-white/15 hover:text-white"
-                  }`}
-                >
-                  {h.label}
-                </button>
+              {HOTSPOTS.map((spot, index) => (
+                <button key={spot.label} onClick={() => setActive(index)} className={`rounded-2xl px-4 py-3 text-left text-xs font-semibold transition-colors ${active === index ? "bg-white text-[#1d1d1f]" : "bg-white/8 text-white/52 hover:bg-white/12 hover:text-white"}`}>{spot.label}</button>
               ))}
             </div>
           </motion.div>
