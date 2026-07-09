@@ -2,18 +2,25 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { motion } from "motion/react";
 import { CheckCircle2, Loader2, Mail } from "lucide-react";
-import { api } from "../lib/api";
 
 export function Waitlist() {
   const [email, setEmail] = useState("");
 
-  const join = useMutation({
-    mutationFn: async (email: string) => {
-      const res = await api.waitlist.$post({ json: { email } });
-      if (!res.ok) throw new Error("Failed");
-      return res.json();
-    },
-  });
+ const join = useMutation({
+  mutationFn: async (email: string) => {
+    const res = await fetch("https://formspree.io/f/mgojjnbr", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    if (!res.ok) throw new Error("Failed");
+    return res.json();
+  },
+});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
