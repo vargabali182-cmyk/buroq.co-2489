@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "motion/react";
 const HOTSPOTS = [
   { label: "Front display", description: "Flush black vertical display: battery percentage and temperature only.", top: "39%", left: "54%" },
   { label: "Power button", description: "One physical button keeps Lite simple and intuitive.", top: "56%", left: "54%" },
-  { label: "Rear USB panel", description: "Three ports are placed on the back as a clean mirror of the display side.", top: "45%", left: "74%" },
+  { label: "Rear USB panel", description: "Two USB-C ports and one USB-A port are placed on the back as a clean mirror of the display side.", top: "45%", left: "74%" },
   { label: "Removable battery", description: "Lower-pole module for better weight balance, serviceability and thermal control.", top: "69%", left: "45%" },
 ];
 

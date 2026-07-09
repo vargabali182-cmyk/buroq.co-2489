@@ -3,9 +3,9 @@ import { BatteryCharging, Gauge, ShieldCheck, Usb } from "lucide-react";
 
 const FEATURES = [
   { icon: BatteryCharging, title: "20k mAh target battery", text: "Enough for real beach use, still realistic for weight, transport and certification planning.", stat: "3–5 phone charges" },
-  { icon: Usb, title: "1× USB-C + 2× USB-A", text: "Modern charging where people actually need it, hidden in the rear pole panel.", stat: "3 device ports" },
-  { icon: Gauge, title: "Display without distraction", text: "Battery percentage and temperature only. Lite must stay simple and premium.", stat: "Battery + °C" },
-  { icon: ShieldCheck, title: "Built for validation", text: "No solar, no app, no alarm cable in version one. Faster prototype, lower risk, clearer message.", stat: "MVP focus" },
+  { icon: Usb, title: "2× USB-C + 1× USB-A", text: "Three charging ports are hidden in the rear panel with a clean mirrored layout: two USB-C and one USB-A.", stat: "2× USB-C + 1× USB-A" },
+  { icon: Gauge, title: "Display without distraction", text: "Battery percentage and temperature only. Lite stays simple, readable and premium.", stat: "Battery + °C" },
+  { icon: ShieldCheck, title: "Built for validation", text: "No solar, no app, no GPS, no alarm cable in version one. The product stays focused and easy to explain.", stat: "MVP focus" },
 ];
 
 export function Features() {

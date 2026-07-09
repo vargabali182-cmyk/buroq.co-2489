@@ -15,7 +15,7 @@ export function RearPanel() {
               </div>
               <div className="mt-8 grid grid-cols-3 gap-3">
                 <div className="rounded-2xl bg-white/12 p-4 text-center text-xs font-semibold">USB-C</div>
-                <div className="rounded-2xl bg-white/12 p-4 text-center text-xs font-semibold">USB-A</div>
+                <div className="rounded-2xl bg-white/12 p-4 text-center text-xs font-semibold">USB-C</div>
                 <div className="rounded-2xl bg-white/12 p-4 text-center text-xs font-semibold">USB-A</div>
               </div>
             </div>
@@ -32,7 +32,7 @@ export function RearPanel() {
           </p>
           <div className="mt-8 rounded-[32px] border border-black/8 bg-[#111827] p-6 text-white">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/45">Designed for real use</p>
-            <p className="mt-4 text-sm leading-7 text-white/70">The ports are placed where people expect convenient access, but without cluttering the visible front of the product.</p>
+            <p className="mt-4 text-sm leading-7 text-white/70">The rear panel carries two USB-C ports and one USB-A port in a calm, mirrored layout that stays out of the way.</p>
           </div>
         </motion.div>
       </div>

@@ -3,7 +3,7 @@ import { ProductVisual } from "./product-visual";
 
 const STORY = [
   { eyebrow: "01 / front", title: "Only the information you need.", body: "A flush vertical black display shows battery percentage and temperature. One simple power button. No app. No menus. No gadget overload." },
-  { eyebrow: "02 / rear", title: "Ports where they belong.", body: "The back of the pole carries three charging ports as a clean mirrored counterpart to the display: one USB-C PD and two USB-A ports under a discreet cover." },
+  { eyebrow: "02 / rear", title: "Ports where they belong.", body: "The back of the pole carries two USB-C ports and one USB-A port as a clean mirrored counterpart to the display, under a discreet cover." },
   { eyebrow: "03 / body", title: "A power bank, not a science project.", body: "A removable battery module sits inside the lower pole to keep the center of gravity sensible and reduce heat exposure near the canopy." },
 ];
 

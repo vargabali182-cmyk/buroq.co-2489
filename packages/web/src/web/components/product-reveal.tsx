@@ -14,7 +14,7 @@ export function ProductReveal() {
             A cleaner way to bring power to the beach.
           </h2>
           <p className="mt-6 text-lg leading-8 text-[#4b5563]">
-            AETRO Lite is a premium umbrella that feels intentional from every angle: one simple power button, a minimal front display, and charging ports hidden on the rear panel where they belong.
+            AETRO Lite is a premium umbrella that feels intentional from every angle: one simple power button, a minimal front display, and two USB-C ports plus one USB-A port hidden on the rear panel where they belong.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <span className="rounded-full border border-[#111827]/10 bg-white/70 px-4 py-2 text-sm font-medium text-[#111827]">Built-in rechargeable battery</span>

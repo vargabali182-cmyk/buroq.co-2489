@@ -24,7 +24,7 @@ export function Hero() {
             Shade.<br />Power.<br />Nothing extra.
           </motion.h1>
           <motion.p initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={reduceMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.18 }} className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-white/68 sm:text-xl lg:mx-0">
-            A premium beach umbrella with a rechargeable battery, a restrained front display, and three charging ports hidden cleanly into the rear panel.
+            A premium beach umbrella with a rechargeable battery, a restrained front display, and two USB-C ports plus one USB-A port hidden cleanly into the rear panel.
           </motion.p>
           <motion.div initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={reduceMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.28 }} className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
             <button onClick={() => scrollTo("#waitlist")} className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[#1d1d1f] shadow-[0_24px_80px_rgba(255,255,255,0.22)] transition-transform hover:-translate-y-1">
