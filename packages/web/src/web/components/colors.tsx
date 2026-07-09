@@ -35,36 +35,36 @@ export function Colors() {
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#86868b]">Configurator</p>
           <h2 className="mt-5 text-[clamp(42px,6.2vw,84px)] font-semibold leading-[0.96] tracking-[-0.06em] text-[#1d1d1f]">
-            Choose the finish. Choose the base.
+            Choose your AETRO Lite.
           </h2>
           <p className="mt-6 text-lg leading-8 text-[#6e6e73]">
-            The launch lineup stays focused on four premium launch colors, with a clean preview that updates as you select the finish and base.
+            A dedicated selector for the launch edition, with a premium preview that updates as you choose color and base.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-          <motion.div initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.7 }} className="rounded-[44px] border border-black/8 bg-white p-8 shadow-[0_30px_100px_rgba(0,0,0,0.08)] sm:p-10">
+        <div className="mt-14 grid gap-8 lg:grid-cols-[1.08fr_0.92fr]">
+          <motion.div initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7 }} className="rounded-[44px] border border-black/8 bg-white p-8 shadow-[0_30px_100px_rgba(0,0,0,0.08)] sm:p-10">
             <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#86868b]">AETRO Lite</p>
-                <h3 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-[#1d1d1f]">Configured preview</h3>
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#86868b]">Preview</p>
+                <h3 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-[#1d1d1f]">Your AETRO Lite</h3>
               </div>
               <div className="rounded-full border border-black/10 bg-[#f5f5f7] px-4 py-2 text-sm font-medium text-[#1d1d1f]">
-                Launch edition
+                Shade. Power. Nothing extra.
               </div>
             </div>
             <ProductVisual accentColor={selectedColor.accent} canopyColor={selectedColor.canopy} />
           </motion.div>
 
           <div className="space-y-6">
-            <motion.div initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.7, delay: 0.04 }} className="rounded-[36px] border border-black/8 bg-white p-7 shadow-[0_20px_80px_rgba(0,0,0,0.06)]">
+            <motion.div initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, delay: 0.04 }} className="rounded-[36px] border border-black/8 bg-white p-7 shadow-[0_20px_80px_rgba(0,0,0,0.06)]">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#86868b]">Colors</p>
-                  <h3 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-[#1d1d1f]">Select a launch color</h3>
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#86868b]">Color</p>
+                  <h3 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-[#1d1d1f]">Choose a launch color</h3>
                 </div>
                 <div className="rounded-full bg-[#f5f5f7] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#6e6e73]">
-                  4 options
+                  4 launch colors
                 </div>
               </div>
 
@@ -76,7 +76,7 @@ export function Colors() {
                       <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-full border border-black/10" style={{ background: color.canopy }} />
                         <div>
-                          <p className="text-sm font-semibold">{color.name}</p>
+                          <p className="text-sm font-semibold">{color.short}</p>
                           <p className={`mt-1 text-xs ${isSelected ? "text-white/70" : "text-[#6e6e73]"}`}>{color.note}</p>
                         </div>
                       </div>
@@ -84,13 +84,9 @@ export function Colors() {
                   );
                 })}
               </div>
-
-              <p className="mt-6 text-sm leading-7 text-[#6e6e73]">
-                Future colors can be introduced later, but the current launch lineup stays intentionally limited.
-              </p>
             </motion.div>
 
-            <motion.div initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.7, delay: 0.08 }} className="rounded-[36px] border border-black/8 bg-white p-7 shadow-[0_20px_80px_rgba(0,0,0,0.06)]">
+            <motion.div initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, delay: 0.08 }} className="rounded-[36px] border border-black/8 bg-white p-7 shadow-[0_20px_80px_rgba(0,0,0,0.06)]">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#86868b]">Base</p>
@@ -123,6 +119,32 @@ export function Colors() {
                     </button>
                   );
                 })}
+              </div>
+            </motion.div>
+
+            <motion.div initial={reduceMotion ? false : { opacity: 0, y: 24 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7, delay: 0.12 }} className="rounded-[36px] border border-black/8 bg-[#111827] p-7 text-white shadow-[0_20px_80px_rgba(17,24,39,0.14)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/45">Your AETRO Lite</p>
+              <div className="mt-5 space-y-3 text-sm leading-7 text-white/74">
+                <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-3">
+                  <span>Color</span>
+                  <span className="font-semibold text-white">{selectedColor.short}</span>
+                </div>
+                <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-3">
+                  <span>Base</span>
+                  <span className="font-semibold text-white">{selectedBase.name}</span>
+                </div>
+                <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-3">
+                  <span>Charging</span>
+                  <span className="font-semibold text-white">2× USB-C + 1× USB-A</span>
+                </div>
+                <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-3">
+                  <span>Display</span>
+                  <span className="font-semibold text-white">Battery + temperature</span>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <span>Philosophy</span>
+                  <span className="font-semibold text-white">No solar, no app, nothing extra</span>
+                </div>
               </div>
             </motion.div>
           </div>

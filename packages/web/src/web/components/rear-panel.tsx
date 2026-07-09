@@ -28,7 +28,7 @@ export function RearPanel() {
             Charging ports in a mirrored, deliberate place.
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4b5563]">
-            The rear panel carries three ports as a clean counterpart to the front display. It keeps the umbrella balanced and avoids turning the product into a wall of hardware.
+            The rear panel carries two USB-C ports and one USB-A port as a clean counterpart to the front display, keeping the umbrella balanced and calm.
           </p>
           <div className="mt-8 rounded-[32px] border border-black/8 bg-[#111827] p-6 text-white">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/45">Designed for real use</p>

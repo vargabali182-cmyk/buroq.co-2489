@@ -9,6 +9,7 @@ import { Resorts } from "../components/resorts";
 import { PricingTest } from "../components/pricing-test";
 import { InvestorSignal } from "../components/investor-signal";
 import { Waitlist } from "../components/waitlist";
+import { Colors } from "../components/colors";
 import { Footer } from "../components/footer";
 
 function Index() {
@@ -23,6 +24,7 @@ function Index() {
       <BeachDays />
       <Resorts />
       <PricingTest />
+      <Colors />
       <InvestorSignal />
       <Waitlist />
       <Footer />
