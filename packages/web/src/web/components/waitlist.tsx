@@ -33,8 +33,8 @@ export function Waitlist() {
         <div className="grid gap-0 lg:grid-cols-[1fr_0.86fr]">
           <div className="p-8 sm:p-12 lg:p-14">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/42">Early access</p>
-            <h2 className="mt-5 text-[clamp(42px,7vw,82px)] font-semibold leading-[0.94] tracking-[-0.06em]">Help shape the first prototype.</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/60">Join the waitlist and tell us the price point where AETRO Lite becomes interesting. This turns the page from decoration into validation.</p>
+            <h2 className="mt-5 text-[clamp(42px,7vw,82px)] font-semibold leading-[0.94] tracking-[-0.06em]">Reserve your place in the first drop.</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/60">Join the waitlist and tell us the price point that feels right for AETRO Lite. This is the first step toward a premium, intentional launch.</p>
 
             <AnimatePresence mode="wait">
               {join.isSuccess ? (

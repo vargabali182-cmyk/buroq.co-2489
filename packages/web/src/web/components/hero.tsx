@@ -24,13 +24,13 @@ export function Hero() {
             Shade.<br />Power.<br />Nothing extra.
           </motion.h1>
           <motion.p initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={reduceMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.18 }} className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-white/68 sm:text-xl lg:mx-0">
-            A premium beach umbrella with an integrated battery, a minimal battery-and-temperature display, and three charging ports hidden cleanly inside the pole.
+            A premium beach umbrella with a rechargeable battery, a restrained front display, and three charging ports hidden cleanly into the rear panel.
           </motion.p>
           <motion.div initial={reduceMotion ? false : { opacity: 0, y: 24 }} animate={reduceMotion ? undefined : { opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.28 }} className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
             <button onClick={() => scrollTo("#waitlist")} className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[#1d1d1f] shadow-[0_24px_80px_rgba(255,255,255,0.22)] transition-transform hover:-translate-y-1">
               Join early access <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </button>
-            <button onClick={() => scrollTo("#design")} className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/8 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-xl transition-colors hover:bg-white/14">
+            <button onClick={() => scrollTo("#overview")} className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/8 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-xl transition-colors hover:bg-white/14">
               <Play size={15} /> See the product story
             </button>
           </motion.div>
