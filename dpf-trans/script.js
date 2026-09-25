@@ -67,6 +67,27 @@
     fileLabel.textContent = n === 0 ? "Kép feltöltése" : n === 1 ? fileInput.files[0].name : n + " kép kiválasztva";
   });
 
+  // Gyepszőnyeg választásakor m² mező
+  var turfField = document.getElementById("turf-field");
+  function syncTurf() {
+    var picked = form.querySelector('input[name="rakomany"]:checked');
+    turfField.hidden = !picked || picked.value !== "Gyepszőnyeg";
+  }
+  form.addEventListener("change", function (e) {
+    if (e.target.name === "rakomany") syncTurf();
+  });
+
+  // „Gyepszőnyeget rendelek” gomb előre kiválasztja a rakományt
+  document.querySelectorAll("[data-preset]").forEach(function (link) {
+    link.addEventListener("click", function () {
+      var radio = form.querySelector('input[name="rakomany"][value="' + link.dataset.preset + '"]');
+      if (radio) {
+        radio.checked = true;
+        syncTurf();
+      }
+    });
+  });
+
   function markInvalid(input) {
     var wrap = input.closest(".field, .consent");
     var bad = !input.checkValidity();
@@ -99,8 +120,28 @@
   reset.addEventListener("click", function () {
     form.reset();
     fileLabel.textContent = "Kép feltöltése";
+    syncTurf();
     done.hidden = true;
     form.hidden = false;
+  });
+
+  // --- Képnagyító (Munkáink) ---
+  var lightbox = document.getElementById("lightbox");
+  var lbImg = lightbox.querySelector(".lightbox__img");
+  var lbCap = lightbox.querySelector(".lightbox__cap");
+  document.querySelectorAll(".shot__btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var img = btn.querySelector("img");
+      var cap = btn.closest("figure").querySelector("figcaption");
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = cap ? cap.textContent : "";
+      if (typeof lightbox.showModal === "function") lightbox.showModal();
+    });
+  });
+  // kattintás a képen kívülre (a háttérre) bezárja
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) lightbox.close();
   });
 
   // --- Évszám a láblécben ---

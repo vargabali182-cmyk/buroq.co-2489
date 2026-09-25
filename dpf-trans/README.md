@@ -24,16 +24,23 @@ python3 -m http.server 8080   # majd: http://localhost:8080
 | `script.js` | Mobilmenü, görgetési animáció, űrlap-ellenőrzés |
 | `assets/logo*.svg` | A matrica PDF-ekből kinyert vektoros logók (sötét / fehér, teljes / szlogen nélküli) |
 | `assets/truck.webp` | A kamion kivágva, átlátszó háttérrel |
+| `assets/photos/*.webp` | Referencia- és gyepszőnyeg-fotók (webre méretezve) |
 
-## Cserélendő helyőrzők (TODO)
+## Kész adatok
 
-- [ ] **Telefonszám** – `+36 30 123 4567` / `tel:+36301234567` (több helyen, keress rá)
-- [ ] **E-mail** – `info@dpftrans.hu`
-- [ ] **Nyitvatartás** – `H–Szo: 6:00–20:00`
-- [ ] **Szolgáltatási terület** – „Budapest, Pest megye – egyeztetéssel országosan”
-- [ ] **Jármű adatai** – `12 m` kinyúlás, `6,2 m` plató, `8 t` teherbírás → ezek PÉLDA számok!
+- [x] Telefonszám: +36 30 951 4834 (a kocsikról)
+- [x] Jármű: 12 m-es Palfinger daru (autó mellett akár 3 t), plató 620 × 240 cm, 8 t teherbírás
+- [x] Referenciafotók: `assets/photos/` (Farkas Bertalan űrkapszulája kiemelve)
+- [x] Gyepszőnyeg szekció + „Gyepszőnyeg” opció az ajánlatkérőben (m² mezővel)
+
+## Még hiányzik (TODO)
+
+- [ ] **E-mail** – most `info@dpftrans.hu` helyőrző
+- [ ] **Nyitvatartás** – most `H–Szo: 6:00–20:00` helyőrző
+- [ ] **Szolgáltatási terület** – „Budapest, Pest megye – egyeztetéssel országosan” (megerősíteni)
 - [ ] **Cégadatok a láblécben** – tulajdonos neve, székhely, EV nyilvántartási szám
-- [ ] **Referenciafotók** – a „Munkáink” rész szürke helyőrzői helyére `<img>` (pl. `assets/ref-1.webp`)
+  (a kocsikon „Varga Sándor” és „AF-13-000787” szerepel – megerősíteni, mi kerüljön ki)
+- [ ] **Gyepszőnyeg részletek** – fajta, ár/m², minimum rendelés (ha ki akarjuk írni)
 - [ ] **Adatkezelési tájékoztató** és **Impresszum** oldal (most `#` link)
 
 ## Élesítés előtt
