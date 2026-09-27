@@ -72,3 +72,9 @@ scripts/
 !packages/mobile/scripts/
 packages/mobile/scripts/*
 !packages/mobile/scripts/generate-ios-certs.py
+
+# /arena skill run folders (sub-agent solutions, attacks, verdicts)
+.arena/
+
+# python bytecode
+__pycache__/
