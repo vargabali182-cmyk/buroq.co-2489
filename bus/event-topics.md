@@ -12,4 +12,6 @@ Defined bus topics and intent:
 - `support.reply_needed` — Support reply draft requested.
 - `buroq.website_task` — Website-specific task to integrate assets or content.
 - `design.asset_needed` — Request for design assets or mockups.
+- `arena.run_requested` — Request to pressure-test a task with the `/arena` tournament. Needs owner approval before it runs.
+- `arena.result` — The arena's surviving solution, the attacks it survived, and the run folder.
 - `human.approval_required` — Explicit owner approval required to proceed.
