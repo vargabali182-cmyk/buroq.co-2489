@@ -21,6 +21,14 @@ How owner approval works
 - Hard rule: No agent may publish listings, spend money, contact suppliers, send customer emails, deploy code, or make irreversible decisions without explicit owner approval.
 - Approval flow: an agent publishes a `human.approval_required` event with a clear summary and action options. `Max` collects context and requests the owner’s decision. Owner responds explicitly; agents only proceed when a valid approval event is received.
 
+How the Arena works
+- The Arena Agent (`departments/arena-agent.md`) runs the `/arena` skill in `.claude/skills/arena/`: many sub-agents solve the same task with different strategies, attack each other's answers, and a judge keeps the strongest until one survives.
+- Use it when one answer is not good enough and the stakes justify the cost: ad account reviews, launch copy, pricing, Product Factory go/no-go calls. Not for small or routine tasks.
+- Every run spends tokens, so it needs owner approval. The owner typing `/arena` is that approval; `Max` asks the owner through `human.approval_required` before starting a run itself.
+- Size: `--quick` (16 agents, 91 sub-agent calls) is the Max OS default. The full 100 agents (595 calls) runs only when the owner picks it. When the owner types `/arena` without a size, `Max` confirms quick or full once before starting.
+- Data first: sub-agents see only the task file. Gather the numbers, files and links before the run; otherwise every competitor guesses.
+- The winner is a proposal. The arena never edits the project, publishes, or spends. Acting on its answer follows the approval flow above.
+
 Using Max OS for BUROQ
 - Use Max to coordinate product development for the AETRO line (AETRO Lite first).
 - Design and web work can be prepared in drafts; nothing that publishes or charges customers happens without owner consent.
