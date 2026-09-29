@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="hu" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DPF Trans – Darus platós fuvarozás | Árajánlatkérés</title>
+  <meta name="description" content="Darus platós fuvarozás és gyepszőnyeg kiszállítás: építőanyag, gépek, konténerek szállítása és daruzása egy autóval, 12 m-es daruval. Kérjen ingyenes árajánlatot!">
+  <meta name="theme-color" content="#0E0E10">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DPF Trans – Darus platós fuvarozás">
+  <meta property="og:description" content="Felrakjuk, elvisszük, daruval letesszük. Kérjen ingyenes árajánlatot!">
+  <meta property="og:image" content="assets/truck.webp">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Ikonkészlet (egyszer definiálva, <use>-zal hivatkozva) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></symbol>
+    <symbol id="i-bricks" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 9.7h18M3 14.3h18M9 5v4.7M15 9.7v4.6M9 14.3V19"/></symbol>
+    <symbol id="i-crane" viewBox="0 0 24 24"><path d="M6 21V4h14M6 8l4-4M17 4v6M17 10a2.5 2.5 0 1 1-2.5 2.5M3 21h6"/></symbol>
+    <symbol id="i-machine" viewBox="0 0 24 24"><rect x="3" y="8" width="14" height="10" rx="1"/><path d="M17 11h3v4h-3M7 8V5h6v3M7 18v2M13 18v2M7 13h6"/></symbol>
+    <symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-5h4v5"/></symbol>
+    <symbol id="i-beam" viewBox="0 0 24 24"><path d="M5 4h14v3h-5v10h5v3H5v-3h5V7H5z"/></symbol>
+    <symbol id="i-grass" viewBox="0 0 24 24"><path d="M3 20h18M6 20c0-4 .8-7 2.5-9.5M10.5 20c0-5.5 1-9.5 3-13M15 20c0-3.5.8-6.5 2.5-8.5M19 20c0-2 .4-3.6 1.2-5"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></symbol>
+  </defs>
+</svg>
+
+<!-- Felső sáv -->
+<div class="topbar">
+  <div class="container topbar__inner">
+    <p class="topbar__info">
+      <span><svg class="ico"><use href="#i-pin"/></svg>Budapest, Pest megye – egyeztetéssel országosan</span>
+      <span><svg class="ico"><use href="#i-clock"/></svg>H–Szo: 6:00–20:00</span>
+    </p>
+    <p class="topbar__contact">
+      <a href="mailto:info@dpftrans.hu"><svg class="ico"><use href="#i-mail"/></svg>info@dpftrans.hu</a>
+      <a href="tel:+36309514834"><svg class="ico"><use href="#i-phone"/></svg>+36 30 951 4834</a>
+    </p>
+  </div>
+</div>
+
+<!-- Fejléc -->
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a class="header__logo" href="#top" aria-label="DPF Trans – kezdőlap">
+      <img src="assets/logo-mark.svg" alt="DPF Trans" width="318" height="34">
+    </a>
+    <nav class="nav" id="nav" aria-label="Fő navigáció">
+      <a href="#szolgaltatasok">Szolgáltatások</a>
+      <a href="#gyepszonyeg">Gyepszőnyeg</a>
+      <a href="#miert">Miért mi?</a>
+      <a href="#munkaink">Munkáink</a>
+      <a href="#gyik">GYIK</a>
+      <a href="#ajanlat" class="nav__cta-mobile">Árajánlatkérés</a>
+    </nav>
+    <div class="header__actions">
+      <a class="header__phone" href="tel:+36309514834">
+        <svg class="ico"><use href="#i-phone"/></svg>
+        <span>+36 30 951 4834</span>
+      </a>
+      <a class="btn btn--red btn--sm" href="#ajanlat"><span>Árajánlat</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menü">
+        <svg class="ico"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy reveal">
+        <p class="eyebrow"><span class="eyebrow__bar"></span>Darus platós fuvarozás</p>
+        <h1 class="hero__title">
+          Felrakjuk.<br>
+          Elvisszük.<br>
+          <em>Daruval letesszük.</em>
+        </h1>
+        <p class="hero__lead">
+          Építőanyag, raklapos áru, gépek, konténer – darus platós teherautóval szállítjuk,
+          és pontosan oda tesszük, ahová kell. Külön daru és rakodómunkás nélkül.
+        </p>
+        <div class="hero__ctas">
+          <a class="btn btn--red btn--lg" href="#ajanlat"><span>Kérek árajánlatot <svg class="ico"><use href="#i-arrow"/></svg></span></a>
+          <a class="btn btn--ghost btn--lg" href="tel:+36309514834"><span><svg class="ico"><use href="#i-phone"/></svg> +36 30 951 4834</span></a>
+        </div>
+        <ul class="hero__checks">
+          <li><svg class="ico"><use href="#i-check"/></svg>Ingyenes árajánlat</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>Rakodás + szállítás egyben</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>ÁFÁ-s számla</li>
+        </ul>
+        <a class="hero__promo" href="#gyepszonyeg">
+          <svg class="ico"><use href="#i-grass"/></svg>
+          <span><strong>Gyepszőnyeg is rendelhető</strong> – kiszállítjuk és daruval lerakjuk</span>
+          <svg class="ico hero__promo-arrow"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+
+      <div class="hero__visual reveal">
+        <div class="hero__slash" aria-hidden="true"></div>
+        <img class="hero__truck" src="assets/truck.webp" width="1455" height="536"
+             alt="A DPF Trans fekete, piros darus platós teherautója">
+        <div class="badge badge--a">
+          <svg class="ico"><use href="#i-crane"/></svg>
+          <div><strong>12 m-es daru</strong><span>akár 3 t emelés</span></div>
+        </div>
+        <div class="badge badge--b">
+          <svg class="ico"><use href="#i-grass"/></svg>
+          <div><strong>Gyepszőnyeg</strong><span>rendelés kiszállítással</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jármű adatai -->
+  <section class="specs" aria-label="A jármű adatai">
+    <div class="container specs__grid">
+      <div class="spec"><strong>12<small>m</small></strong><span>daru kinyúlás</span></div>
+      <div class="spec"><strong>3<small>t</small></strong><span>emelés az autó mellett</span></div>
+      <div class="spec"><strong>8<small>t</small></strong><span>teherbírás</span></div>
+      <div class="spec"><strong>6,2×2,4<small>m</small></strong><span>plató</span></div>
+    </div>
+  </section>
+
+  <!-- SZOLGÁLTATÁSOK -->
+  <section class="section" id="szolgaltatasok">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow"><span class="eyebrow__bar"></span>Szolgáltatások</p>
+        <h2>Mit vállalunk?</h2>
+        <p>Ha elfér a platón és bírja a daru, elvisszük. Magánszemélyeknek, kivitelezőknek és cégeknek is.</p>
+      </header>
+
+      <div class="services">
+        <article class="service reveal">
+          <div class="service__icon"><svg class="ico"><use href="#i-bricks"/></svg></div>
+          <h3>Építőanyag szállítás</h3>
+          <p>Raklapos tégla, cserép, cement, zsákos áru – a telepről egyenesen az építkezésre.</p>
+        </article>
+        <article class="service reveal">
+          <div class="service__icon"><svg class="ico"><use href="#i-crane"/></svg></div>
+          <h3>Daruzás, emelés</h3>
+          <p>Tetőre, födémre, kerítésen át vagy szűk udvarba – oda emeljük, ahová kézzel nem lehet.</p>
+        </article>
+        <article class="service reveal">
+          <div class="service__icon"><svg class="ico"><use href="#i-machine"/></svg></div>
+          <h3>Gép- és eszközszállítás</h3>
+          <p>Kisgépek, aggregátorok, ipari berendezések biztonságos rögzítéssel.</p>
+        </article>
+        <article class="service reveal">
+          <div class="service__icon"><svg class="ico"><use href="#i-house"/></svg></div>
+          <h3>Konténer, kabin, medence</h3>
+          <p>Irodakonténer, kerti tároló, kabin vagy medence mozgatása és helyre tétele, akár tetőre is.</p>
+        </article>
+        <article class="service reveal">
+          <div class="service__icon"><svg class="ico"><use href="#i-beam"/></svg></div>
+          <h3>Acél- és faanyag</h3>
+          <p>Gerenda, zsaluanyag, acélszerkezet, betonelem – hosszú és nehéz darabok is.</p>
+        </article>
+        <article class="service reveal">
+          <div class="service__icon"><svg class="ico"><use href="#i-grass"/></svg></div>
+          <h3>Gyepszőnyeg kiszállítás</h3>
+          <p>Gyepszőnyeg rendelés nagy mennyiségben is, daruval lerakva oda, ahol fektetni fogják. <a class="service__link" href="#gyepszonyeg">Részletek</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GYEPSZŐNYEG -->
+  <section class="turf" id="gyepszonyeg">
+    <div class="container turf__inner">
+      <div class="turf__media reveal">
+        <img class="turf__photo" src="assets/photos/gyep-auto.webp" width="1400" height="1050" loading="lazy"
+             alt="Zöld darus platós teherautó egy gyepszőnyeg-telep mellett">
+        <img class="turf__photo turf__photo--small" src="assets/photos/gyep-rendeles.webp" width="1200" height="900" loading="lazy"
+             alt="Darus platós teherautó „Gyepszőnyeg rendelés” felirattal a platón">
+        <p class="turf__tag"><svg class="ico"><use href="#i-grass"/></svg>Friss gyep, egyenesen a helyszínre</p>
+      </div>
+      <div class="turf__copy reveal">
+        <p class="eyebrow eyebrow--turf"><span class="eyebrow__bar"></span>Gyepszőnyeg</p>
+        <h2>Gyepszőnyeg rendelés, kiszállítással</h2>
+        <p class="turf__lead">Nálunk gyepszőnyeget is rendelhet, nagy mennyiségben is. Raklapon hozzuk, és daruval tesszük le
+          pontosan oda, ahol fektetni fogják, akár a kerítésen vagy a házon át. Nem kell talicskázni.</p>
+        <ul class="turf__list">
+          <li><svg class="ico"><use href="#i-check"/></svg><span><strong>Nagy tételben is:</strong> egy fuvarral akár 8 tonna</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span><strong>Daruval lerakva</strong> a kert vagy a munkaterület közepére</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span><strong>Kertbe, építkezésre, parkosításhoz</strong> – magánszemélynek és kivitelezőnek</span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span><strong>Egy árban</strong> a gyep és a szállítás</span></li>
+        </ul>
+        <div class="turf__ctas">
+          <a class="btn btn--red btn--lg" href="#ajanlat" data-preset="Gyepszőnyeg"><span>Gyepszőnyeget rendelek <svg class="ico"><use href="#i-arrow"/></svg></span></a>
+          <a class="btn btn--ghost btn--lg" href="tel:+36309514834"><span><svg class="ico"><use href="#i-phone"/></svg> +36 30 951 4834</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MIÉRT DARUS PLATÓ + FOLYAMAT -->
+  <section class="section section--paper" id="miert">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow"><span class="eyebrow__bar"></span>Miért mi?</p>
+        <h2>Egy autó. Egy hívás. Egy ár.</h2>
+        <p>Nem kell külön teherautót, darut és rakodókat szervezni – mi megoldjuk egyben.</p>
+      </header>
+
+      <div class="compare reveal">
+        <div class="compare__card compare__card--old">
+          <h3>Hagyományosan</h3>
+          <ul>
+            <li><svg class="ico"><use href="#i-x"/></svg>Teherautó a szállításhoz</li>
+            <li><svg class="ico"><use href="#i-x"/></svg>Külön daru vagy rakodóbrigád</li>
+            <li><svg class="ico"><use href="#i-x"/></svg>Több időpont, több számla</li>
+          </ul>
+        </div>
+        <div class="compare__vs" aria-hidden="true">vs</div>
+        <div class="compare__card compare__card--new">
+          <h3>DPF Trans darus platóval</h3>
+          <ul>
+            <li><svg class="ico"><use href="#i-check"/></svg>Ugyanaz az autó szállít és rakod</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Egy időpont, egy kapcsolattartó</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Előre egyeztetett fix ár, egy számla</li>
+          </ul>
+        </div>
+      </div>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step__num">01</span>
+          <h3>Írja meg, mit vinnénk</h3>
+          <p>Űrlapon vagy telefonon – honnan, hova, mit. Egy fotó sokat segít.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step__num">02</span>
+          <h3>Fix árat adunk</h3>
+          <p>Rövid egyeztetés után pontos ajánlat, rejtett költségek nélkül.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step__num">03</span>
+          <h3>Kiszállunk és letesszük</h3>
+          <p>Felrakjuk, elvisszük, és daruval a helyére tesszük. Kész.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- MUNKÁINK -->
+  <section class="section" id="munkaink">
+    <div class="container">
+      <header class="section__head section__head--row reveal">
+        <div>
+          <p class="eyebrow"><span class="eyebrow__bar"></span>Referenciák</p>
+          <h2>Munkáink</h2>
+        </div>
+        <p>Klímagéptől a pálmafáig, irodakonténertől Farkas Bertalan űrkapszulájáig. Kattintson a képekre a nagyobb nézethez.</p>
+      </header>
+
+      <article class="feature reveal">
+        <div class="feature__media">
+          <figure class="shot shot--feature">
+            <button class="shot__btn" type="button" aria-label="Farkas Bertalan űrkapszulája a daron – nagyítás">
+              <img src="assets/photos/urkapszula.webp" width="1200" height="1600" alt="Farkas Bertalan űrkapszuláját emeli a darus autó" loading="lazy">
+              <svg class="ico shot__zoom" aria-hidden="true"><use href="#i-expand"/></svg>
+            </button>
+            <figcaption>Farkas Bertalan űrkapszulája a daron</figcaption>
+          </figure>
+          <figure class="shot shot--feature">
+            <button class="shot__btn" type="button" aria-label="Az űrkapszula a platón – nagyítás">
+              <img src="assets/photos/urkapszula-plato.webp" width="900" height="1200" alt="Az СССР feliratú űrkapszula rögzítve a platón" loading="lazy">
+              <svg class="ico shot__zoom" aria-hidden="true"><use href="#i-expand"/></svg>
+            </button>
+            <figcaption>Az űrkapszula a platón</figcaption>
+          </figure>
+        </div>
+        <div class="feature__copy">
+          <p class="feature__label">Kiemelt munka</p>
+          <h3>Farkas Bertalan űrkapszuláját is mi szállítottuk</h3>
+          <p>Magyarország első űrhajósának eredeti kapszuláját emeltük fel és vittük el darus platós autónkkal.
+            Egy ilyen darabnál minden centi és minden kötözés számít. Ha ezt biztonságban elvittük, az Ön rakományát is.</p>
+          <a class="btn btn--red" href="#ajanlat"><span>Kérek árajánlatot <svg class="ico"><use href="#i-arrow"/></svg></span></a>
+        </div>
+      </article>
+
+      <div class="gallery">
+        <figure class="shot reveal">
+          <button class="shot__btn" type="button" aria-label="Klímagép tetőre emelése – nagyítás">
+            <img src="assets/photos/klima-tetore.webp" width="1200" height="900" alt="Nagy klímagép emelése egy épület tetejére" loading="lazy">
+            <svg class="ico shot__zoom" aria-hidden="true"><use href="#i-expand"/></svg>
+          </button>
+          <figcaption>Klímagép tetőre emelése</figcaption>
+        </figure>
+        <figure class="shot shot--wide reveal">
+          <button class="shot__btn" type="button" aria-label="Kabin beemelése tetőre – nagyítás">
+            <img src="assets/photos/kabin-tetore.webp" width="1200" height="900" alt="Üvegfalú kabin daruval emelve egy tetőszerkezetre" loading="lazy">
+            <svg class="ico shot__zoom" aria-hidden="true"><use href="#i-expand"/></svg>
+          </button>
+          <figcaption>Kabin beemelése tetőre</figcaption>
+        </figure>
+        <figure class="shot shot--tall reveal">
+          <button class="shot__btn" type="button" aria-label="Pálmafa beemelése – nagyítás">
+            <img src="assets/photos/palmafa.webp" width="900" height="1200" alt="Pálmafa beemelése daruval egy kertbe" loading="lazy">
+            <svg class="ico shot__zoom" aria-hidden="true"><use href="#i-expand"/></svg>
+          </button>
+          <figcaption>Pálmafa beemelése</figcaption>
+        </figure>
+        <figure class="shot reveal">
+          <button class="shot__btn" type="button" aria-label="Irodakonténer mozgatása – nagyítás">
+            <img src="assets/photos/irodakontener.webp" width="1200" height="900" alt="Kék irodakonténer emelése építési területen" loading="lazy">
+            <svg class="ico shot__zoom" aria-hidden="true"><use href="#i-expand"/></svg>
+          </button>
+          <figcaption>Irodakonténer mozgatása</figcaption>
+        </figure>
+        <figure class="shot reveal">
+          <button class="shot__btn" type="button" aria-label="Kábeldobok szállítása – nagyítás">
+            <img src="assets/photos/kabeldobok.webp" width="1200" height="900" alt="Nagy kábeldobok két darus platós autón" loading="lazy">
+            <svg class="ico shot__zoom" aria-hidden="true"><use href="#i-expand"/></svg>
+          </button>
+          <figcaption>Kábeldobok szállítása</figcaption>
+        </figure>
+        <figure class="shot reveal">
+          <button class="shot__btn" type="button" aria-label="Acélszerkezet szerelés – nagyítás">
+            <img src="assets/photos/acelszerkezet.webp" width="1200" height="900" alt="Acéloszlop beemelése csarnoképítésnél" loading="lazy">
+            <svg class="ico shot__zoom" aria-hidden="true"><use href="#i-expand"/></svg>
+          </button>
+          <figcaption>Acélszerkezet szerelés</figcaption>
+        </figure>
+        <figure class="shot reveal">
+          <button class="shot__btn" type="button" aria-label="Biztonságosan lekötve – nagyítás">
+            <img src="assets/photos/rakomany-lekotve.webp" width="1200" height="900" alt="Ponyvával takart, spaniferrel lekötött rakomány a platón" loading="lazy">
+            <svg class="ico shot__zoom" aria-hidden="true"><use href="#i-expand"/></svg>
+          </button>
+          <figcaption>Biztonságosan lekötve</figcaption>
+        </figure>
+        <figure class="shot shot--wide reveal">
+          <button class="shot__btn" type="button" aria-label="A flottánk – nagyítás">
+            <img src="assets/photos/flotta.webp" width="1400" height="1050" alt="Darus platós teherautók sorban a telephelyen" loading="lazy">
+            <svg class="ico shot__zoom" aria-hidden="true"><use href="#i-expand"/></svg>
+          </button>
+          <figcaption>A flottánk</figcaption>
+        </figure>
+        <figure class="shot reveal">
+          <button class="shot__btn" type="button" aria-label="Mindig bevetésre készen – nagyítás">
+            <img src="assets/photos/axor-kek.webp" width="1200" height="900" alt="Kék darus platós Mercedes Axor teherautó" loading="lazy">
+            <svg class="ico shot__zoom" aria-hidden="true"><use href="#i-expand"/></svg>
+          </button>
+          <figcaption>Mindig bevetésre készen</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Kép nagyítva">
+      <form method="dialog"><button class="lightbox__close" aria-label="Bezárás"><svg class="ico"><use href="#i-x"/></svg></button></form>
+      <img class="lightbox__img" src="" alt="">
+      <p class="lightbox__cap"></p>
+    </dialog>
+  </section>
+
+  <!-- ÁRAJÁNLAT -->
+  <section class="quote" id="ajanlat">
+    <div class="container quote__inner">
+      <div class="quote__info reveal">
+        <p class="eyebrow eyebrow--light"><span class="eyebrow__bar"></span>Ingyenes árajánlat</p>
+        <h2>Mondja el, mit vigyünk – mi megmondjuk, mennyi.</h2>
+        <p class="quote__lead">Töltse ki az űrlapot, és munkaidőben rövid időn belül visszahívjuk egy pontos, fix árral.</p>
+
+        <div class="quote__price">
+          <h3>Mitől függ az ár?</h3>
+          <ul>
+            <li><svg class="ico"><use href="#i-check"/></svg>Távolság (km)</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Rakodási, daruzási idő</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>A rakomány súlya és mérete</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>A helyszín megközelíthetősége</li>
+          </ul>
+        </div>
+
+        <div class="quote__contacts">
+          <a class="contact-card" href="tel:+36309514834">
+            <svg class="ico"><use href="#i-phone"/></svg>
+            <div><span>Sürgős? Hívjon most</span><strong>+36 30 951 4834</strong></div>
+          </a>
+          <a class="contact-card" href="mailto:info@dpftrans.hu">
+            <svg class="ico"><use href="#i-mail"/></svg>
+            <div><span>Írjon e-mailt</span><strong>info@dpftrans.hu</strong></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="quote__form-wrap reveal">
+        <form class="qform" id="quote-form" novalidate>
+          <fieldset class="qform__group">
+            <legend><span>1</span>Mit szállítunk?</legend>
+            <div class="chips" role="radiogroup">
+              <label class="chip"><input type="radio" name="rakomany" value="Építőanyag" checked><span>Építőanyag</span></label>
+              <label class="chip chip--turf"><input type="radio" name="rakomany" value="Gyepszőnyeg"><span>Gyepszőnyeg</span></label>
+              <label class="chip"><input type="radio" name="rakomany" value="Raklapos áru"><span>Raklapos áru</span></label>
+              <label class="chip"><input type="radio" name="rakomany" value="Gép"><span>Gép</span></label>
+              <label class="chip"><input type="radio" name="rakomany" value="Konténer / kabin"><span>Konténer / kabin</span></label>
+              <label class="chip"><input type="radio" name="rakomany" value="Egyéb"><span>Egyéb</span></label>
+            </div>
+            <label class="field field--turf" id="turf-field" hidden>
+              <span>Hány m² gyepszőnyeg kell?</span>
+              <input type="number" name="gyep_m2" id="gyep-m2" min="1" step="1" inputmode="numeric" placeholder="pl. 250">
+            </label>
+            <div class="grid-2">
+              <label class="field">
+                <span>Becsült súly</span>
+                <select name="suly">
+                  <option>Nem tudom</option>
+                  <option>500 kg alatt</option>
+                  <option>500 – 1000 kg</option>
+                  <option>1 – 3 tonna</option>
+                  <option>3 – 6 tonna</option>
+                  <option>6 tonna felett</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Kell daruzás?</span>
+                <select name="daruzas">
+                  <option>Felrakásnál és lerakásnál</option>
+                  <option>Csak felrakásnál</option>
+                  <option>Csak lerakásnál</option>
+                  <option>Nem kell</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="qform__group">
+            <legend><span>2</span>Honnan hova, mikorra?</legend>
+            <div class="grid-2">
+              <label class="field">
+                <span>Felrakodás helye *</span>
+                <input type="text" name="honnan" placeholder="pl. Érd, Tárnoki út 10." required>
+              </label>
+              <label class="field">
+                <span>Lerakodás helye *</span>
+                <input type="text" name="hova" placeholder="pl. Budaörs, Szabadság út 5." required>
+              </label>
+              <label class="field">
+                <span>Mikorra?</span>
+                <input type="date" name="datum">
+              </label>
+              <label class="field field--file">
+                <span>Fotó (nem kötelező)</span>
+                <input type="file" name="foto" accept="image/*" multiple>
+                <span class="file-btn"><svg class="ico"><use href="#i-upload"/></svg><em>Kép feltöltése</em></span>
+              </label>
+            </div>
+            <label class="field">
+              <span>Megjegyzés</span>
+              <textarea name="megjegyzes" rows="3" placeholder="Méretek, darabszám, akadályok (vezeték, fa, szűk utca)…"></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset class="qform__group">
+            <legend><span>3</span>Elérhetőség</legend>
+            <div class="grid-3">
+              <label class="field">
+                <span>Név *</span>
+                <input type="text" name="nev" autocomplete="name" required>
+              </label>
+              <label class="field">
+                <span>Telefon *</span>
+                <input type="tel" name="telefon" autocomplete="tel" placeholder="+36" required>
+              </label>
+              <label class="field">
+                <span>E-mail</span>
+                <input type="email" name="email" autocomplete="email">
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="consent">
+            <input type="checkbox" name="adatkezeles" required>
+            <span>Elolvastam és elfogadom az <a href="#">adatkezelési tájékoztatót</a>. *</span>
+          </label>
+
+          <button class="btn btn--red btn--lg btn--block" type="submit"><span>Ajánlatot kérek <svg class="ico"><use href="#i-arrow"/></svg></span></button>
+          <p class="qform__note">A *-gal jelölt mezők kötelezők. Az ajánlatkérés ingyenes, és nem kötelez semmire.</p>
+        </form>
+
+        <div class="qdone" id="quote-done" hidden>
+          <div class="qdone__icon"><svg class="ico"><use href="#i-check"/></svg></div>
+          <h3>Köszönjük, megkaptuk!</h3>
+          <p>Hamarosan visszahívjuk a megadott telefonszámon egy pontos ajánlattal.</p>
+          <button class="btn btn--ghost" type="button" id="quote-reset"><span>Új ajánlatkérés</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GYIK -->
+  <section class="section" id="gyik">
+    <div class="container faq-wrap">
+      <header class="section__head reveal">
+        <p class="eyebrow"><span class="eyebrow__bar"></span>GYIK</p>
+        <h2>Gyakori kérdések</h2>
+        <p>Nem találja a választ? Hívjon nyugodtan, szívesen segítünk.</p>
+        <a class="btn btn--dark" href="tel:+36309514834"><span><svg class="ico"><use href="#i-phone"/></svg> Hívás most</span></a>
+      </header>
+
+      <div class="faq reveal">
+        <details open>
+          <summary>Mennyibe kerül egy fuvar?<svg class="ico"><use href="#i-chevron"/></svg></summary>
+          <p>Az ár a távolságtól, a rakodási időtől és a rakomány súlyától, méretétől függ. Küldje el a részleteket, és fix árat adunk – a munka előtt tudni fogja a végösszeget.</p>
+        </details>
+        <details>
+          <summary>Mekkora súlyt tud felemelni a daru?<svg class="ico"><use href="#i-chevron"/></svg></summary>
+          <p>Közvetlenül az autó mellett akár 3 tonnát. A daru 12 méterre nyúlik ki, de minél messzebb kell letenni, annál kevesebbet bír: 12 méteren már csak könnyebb terhet. Írja meg a súlyt és a távolságot, és megmondjuk, belefér-e.</p>
+        </details>
+        <details>
+          <summary>Kell rakodómunkás a helyszínre?<svg class="ico"><use href="#i-chevron"/></svg></summary>
+          <p>Nem. A rakodást daruval mi végezzük, Önnek csak azt kell megmutatnia, hová kerüljön az áru.</p>
+        </details>
+        <details>
+          <summary>Mennyi fér a platóra?<svg class="ico"><use href="#i-chevron"/></svg></summary>
+          <p>A plató 620 cm hosszú és 240 cm széles, a teherbírás 8 tonna. Nagyobb mennyiséget, például sok raklap gyepszőnyeget, több fordulóban viszünk.</p>
+        </details>
+        <details>
+          <summary>Hogyan rendelhetek gyepszőnyeget?<svg class="ico"><use href="#i-chevron"/></svg></summary>
+          <p>Az ajánlatkérőben válassza a „Gyepszőnyeg” lehetőséget, és írja meg, hány négyzetméter kell és hova. Visszahívjuk egy árral, amiben a gyep és a kiszállítás is benne van.</p>
+        </details>
+        <details>
+          <summary>Milyen területen vállalnak fuvart?<svg class="ico"><use href="#i-chevron"/></svg></summary>
+          <p>Elsősorban Budapesten és Pest megyében, de előzetes egyeztetéssel az ország bármely pontjára szállítunk.</p>
+        </details>
+        <details>
+          <summary>Adnak számlát?<svg class="ico"><use href="#i-chevron"/></svg></summary>
+          <p>Igen, minden munkáról ÁFÁ-s számlát állítunk ki – magánszemélynek és cégnek egyaránt.</p>
+        </details>
+        <details>
+          <summary>Mi kell a pontos ajánlathoz?<svg class="ico"><use href="#i-chevron"/></svg></summary>
+          <p>A fel- és lerakodás címe, a rakomány típusa, becsült súlya és mérete, és ha van, egy fotó a helyszínről. Minél több infó, annál pontosabb az ár.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA sáv -->
+  <section class="cta-band">
+    <div class="container cta-band__inner">
+      <h2>Holnapra kellene? <span>Hívjon, megoldjuk.</span></h2>
+      <div class="cta-band__actions">
+        <a class="btn btn--white btn--lg" href="tel:+36309514834"><span><svg class="ico"><use href="#i-phone"/></svg> +36 30 951 4834</span></a>
+        <a class="btn btn--outline-white btn--lg" href="#ajanlat"><span>Árajánlatot kérek</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Lábléc -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <img src="assets/logo-white.svg" alt="DPF Trans – Darus platós fuvarozás" width="260" height="47">
+      <p>Darus platós fuvarozás, daruzás és gyepszőnyeg kiszállítás – építőanyag, gépek, konténerek szállítása egy kézből.</p>
+    </div>
+    <div>
+      <h4>Szolgáltatások</h4>
+      <ul>
+        <li><a href="#szolgaltatasok">Építőanyag szállítás</a></li>
+        <li><a href="#szolgaltatasok">Daruzás, emelés</a></li>
+        <li><a href="#szolgaltatasok">Gépszállítás</a></li>
+        <li><a href="#szolgaltatasok">Konténer, kabin</a></li>
+        <li><a href="#gyepszonyeg">Gyepszőnyeg kiszállítás</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kapcsolat</h4>
+      <ul class="footer__contact">
+        <li><svg class="ico"><use href="#i-phone"/></svg><a href="tel:+36309514834">+36 30 951 4834</a></li>
+        <li><svg class="ico"><use href="#i-mail"/></svg><a href="mailto:info@dpftrans.hu">info@dpftrans.hu</a></li>
+        <li><svg class="ico"><use href="#i-clock"/></svg>H–Szo: 6:00–20:00</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Cégadatok</h4>
+      <!-- TODO: tulajdonos neve, székhely, EV nyilvántartási szám -->
+      <ul class="footer__legal">
+        <li>[Tulajdonos neve] egyéni vállalkozó</li>
+        <li>Székhely: [cím]</li>
+        <li>Nyilvántartási szám: [szám]</li>
+        <li>Adószám: 50140163-2-33</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>© <span id="year">2026</span> DPF Trans. Minden jog fenntartva.</p>
+    <p><a href="#">Adatkezelési tájékoztató</a> · <a href="#">Impresszum</a></p>
+  </div>
+</footer>
+
+<!-- Mobil alsó sáv -->
+<div class="mobile-bar">
+  <a class="mobile-bar__call" href="tel:+36309514834"><svg class="ico"><use href="#i-phone"/></svg>Hívás</a>
+  <a class="mobile-bar__quote" href="#ajanlat">Árajánlat<svg class="ico"><use href="#i-arrow"/></svg></a>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
