@@ -90,6 +90,40 @@ Szabad tartalék lábak későbbre (kapu, garázs, relé stb.): **GPIO17, 18, 21
 - A Dupont-kábel legyen rövid (10–20 cm). A hosszú, lötyögő kábel SPI-n hülyeségeket okoz.
 - Ellenőrzés bekötés után, USB nélkül: 8 kábel, **VCC a 3V3-on van (nem 5V-on)**, és egyik láb sincs eggyel elcsúszva.
 
+### OLED + BME280 + encoder: hogyan dugd össze (forrasztás után)
+
+Az ESP32-S3-on csak 1–2 db 3V3 láb van, de a 3V3-ra hárman is kíváncsiak (CC1101, OLED, BME280),
+az SDA és az SCL pedig két eszközre megy. Erre jó a breadboard:
+
+1. **ESP 3V3 → breadboard piros (+) sín**, **ESP GND → kék (−) sín.**
+2. A CC1101 VCC/GND, az OLED VCC/GND és a BME280 VIN/GND **mind a sínről** kapja a tápot.
+3. **ESP GPIO8 → egy breadboard-sor (pl. 10. sor)**. Ugyanebbe a sorba megy az OLED SDA és a BME280 SDA.
+4. **ESP GPIO9 → egy másik sor (pl. 12. sor)**. Ugyanebbe a sorba megy az OLED SCL és a BME280 SCL.
+5. Az encoder és a gombok lábai **közvetlenül** mennek az ESP-re (anya–anya vagy apa–anya Dupont).
+
+Az OLED-modul (FRONT-ROT-OLED13) feliratai gyártótól függően kicsit eltérhetnek. Így párosítsd:
+
+| Felirat a kijelzőmodulon | ESP32-S3 |
+|---|---|
+| GND | GND (sín) |
+| VCC | 3V3 (sín) |
+| SCL | GPIO9 (közös sor) |
+| SDA | GPIO8 (közös sor) |
+| TRA / A / CLK / S1 | GPIO4 |
+| TRB / B / DT / S2 | GPIO5 |
+| PSH / PUSH / SW | GPIO6 |
+| CON / CONFIRM / OK | GPIO7 |
+| BAK / BACK | **GPIO16** |
+
+| Felirat a BME280-on | ESP32-S3 |
+|---|---|
+| VIN / VCC | 3V3 (sín) – **nem 5V** |
+| GND | GND (sín) |
+| SCL / SCK | GPIO9 (közös sor) |
+| SDA / SDI | GPIO8 (közös sor) |
+| CSB (ha van) | 3V3 |
+| SDO (ha van) | GND → `0x76` cím |
+
 ---
 
 ## 3. 1. lépés: a soros port megjavítása
