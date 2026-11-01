@@ -44,22 +44,41 @@ Javítás: **a CC1101 marad a GPIO10–13-on** (ez az ESP32-S3 alapértelmezett 
 | MISO | GPIO13  | rádió → ESP (a modulon néha `MISO/GDO1` a felirat) |
 | GDO2 | GPIO15  | |
 
-### Kijelző, kezelőszervek, szenzor (később, beforrasztás után)
+### Kijelző és hőmérő (beforrasztás után)
 
-| Funkció | ESP32-S3 láb | Megjegyzés |
-|---|---|---|
-| OLED + BME280 VCC | 3V3 | közös 3,3 V |
-| OLED + BME280 GND | GND | |
-| OLED SDA + BME280 SDA | GPIO8  | közös I²C busz, mindkettő ugyanarra a lábra megy |
-| OLED SCL + BME280 SCL | GPIO9  | közös I²C busz |
-| Encoder A | GPIO4 | |
-| Encoder B | GPIO5 | |
-| Encoder gomb (PUSH) | GPIO6 | |
-| CONFIRM | GPIO7 | |
-| BACK | **GPIO16** | **régen GPIO10 volt, ütközött a CC1101 CSN-nel** |
+Hogy semmit ne kelljen elosztani, **a kijelző és a hőmérő külön I²C buszt kap**
+(az ESP32-S3-nak kettő van), és **a lapon lévő két 3V3 láb közül mindkettő kap egyet**.
 
+**Kijelző (FRONT-ROT-OLED13) → ESP32-S3**
+
+| Kijelző láb | ESP32-S3 láb |
+|---|---|
+| VCC | 3V3 (az egyik) |
+| GND | GND |
+| SDA | GPIO8 |
+| SCL | GPIO9 |
+| TRA (A / CLK) | GPIO4 |
+| TRB (B / DT) | GPIO5 |
+| PSH (PUSH / SW) | GPIO6 |
+| CON (CONFIRM) | GPIO7 |
+| BAK (BACK) | **GPIO16** (régen GPIO10 volt, ütközött a CC1101 CSN-nel) |
+
+**Hőmérő (BME280) → ESP32-S3**
+
+| BME280 láb | ESP32-S3 láb |
+|---|---|
+| VIN / VCC | 3V3 (a másik) |
+| GND | GND (egy másik GND láb) |
+| SDA / SDI | GPIO17 |
+| SCL / SCK | GPIO18 |
+| CSB (ha van) | nem kell bekötni |
+| SDO (ha van) | nem kell bekötni |
+
+Minden anya–anya Dupont, egyenesen, breadboard nélkül. Kódban: kijelző `Wire` (8/9), BME280 `Wire1` (17/18).
 A gombok és az encoder `INPUT_PULLUP`-pal mennek: a gomb a lábat GND-re húzza, ha megnyomod.
-Az OLED címe I²C-n jellemzően `0x3C`, a BME280-é `0x76` vagy `0x77`, ezért elférnek ugyanazon a buszon.
+
+**Ha a CC1101 is be van kötve:** három eszköz kér 3V3-at, de csak két 3V3 láb van. Ilyenkor az egyik 3V3
+lábat vidd a breadboard piros sínjére (a GND-t a kékre), és arról kapja a tápot kettő az eszközök közül.
 
 ### Ezekhez a lábakhoz ne nyúlj
 
@@ -71,7 +90,7 @@ Az OLED címe I²C-n jellemzően `0x3C`, a BME280-é `0x76` vagy `0x77`, ezért 
 | GPIO43, 44 | UART0 TX/RX = a „COM” port, ezen jön a Serial Monitor |
 | GPIO48 (vagy 38) | a lap RGB LED-je |
 
-Szabad tartalék lábak későbbre (kapu, garázs, relé stb.): **GPIO17, 18, 21, 39, 40, 41, 42, 47.**
+Szabad tartalék lábak későbbre (kapu, garázs, relé stb.): **GPIO21, 39, 40, 41, 42, 47.** (A GPIO17/18 a BME280-é.)
 
 ---
 
@@ -89,40 +108,6 @@ Szabad tartalék lábak későbbre (kapu, garázs, relé stb.): **GPIO17, 18, 21
   árt neki, csak süket lesz.
 - A Dupont-kábel legyen rövid (10–20 cm). A hosszú, lötyögő kábel SPI-n hülyeségeket okoz.
 - Ellenőrzés bekötés után, USB nélkül: 8 kábel, **VCC a 3V3-on van (nem 5V-on)**, és egyik láb sincs eggyel elcsúszva.
-
-### OLED + BME280 + encoder: hogyan dugd össze (forrasztás után)
-
-Az ESP32-S3-on csak 1–2 db 3V3 láb van, de a 3V3-ra hárman is kíváncsiak (CC1101, OLED, BME280),
-az SDA és az SCL pedig két eszközre megy. Erre jó a breadboard:
-
-1. **ESP 3V3 → breadboard piros (+) sín**, **ESP GND → kék (−) sín.**
-2. A CC1101 VCC/GND, az OLED VCC/GND és a BME280 VIN/GND **mind a sínről** kapja a tápot.
-3. **ESP GPIO8 → egy breadboard-sor (pl. 10. sor)**. Ugyanebbe a sorba megy az OLED SDA és a BME280 SDA.
-4. **ESP GPIO9 → egy másik sor (pl. 12. sor)**. Ugyanebbe a sorba megy az OLED SCL és a BME280 SCL.
-5. Az encoder és a gombok lábai **közvetlenül** mennek az ESP-re (anya–anya vagy apa–anya Dupont).
-
-Az OLED-modul (FRONT-ROT-OLED13) feliratai gyártótól függően kicsit eltérhetnek. Így párosítsd:
-
-| Felirat a kijelzőmodulon | ESP32-S3 |
-|---|---|
-| GND | GND (sín) |
-| VCC | 3V3 (sín) |
-| SCL | GPIO9 (közös sor) |
-| SDA | GPIO8 (közös sor) |
-| TRA / A / CLK / S1 | GPIO4 |
-| TRB / B / DT / S2 | GPIO5 |
-| PSH / PUSH / SW | GPIO6 |
-| CON / CONFIRM / OK | GPIO7 |
-| BAK / BACK | **GPIO16** |
-
-| Felirat a BME280-on | ESP32-S3 |
-|---|---|
-| VIN / VCC | 3V3 (sín) – **nem 5V** |
-| GND | GND (sín) |
-| SCL / SCK | GPIO9 (közös sor) |
-| SDA / SDI | GPIO8 (közös sor) |
-| CSB (ha van) | 3V3 |
-| SDO (ha van) | GND → `0x76` cím |
 
 ---
 
@@ -245,7 +230,7 @@ Az `[A]` rész a RadioLibtől függetlenül, közvetlenül olvassa ki a chipet. 
 - [ ] 3. Távirányító jelvizsgálata: `JEL!` jön gombnyomásra, utána a nyers jel rögzítése és dekódolása
 - [ ] 4. Adás és vétel próbája (visszajátszás, előbb a redőny közelében, kis teljesítménnyel)
 - [ ] 5. OLED + encoder beforrasztása, bekötése (GPIO8/9, 4/5/6, 7, **16**)
-- [ ] 6. BME280 beforrasztása, bekötése (közös I²C: GPIO8/9)
+- [ ] 6. BME280 beforrasztása, bekötése (saját I²C: GPIO17/18)
 - [ ] 7. Helyi vezérlőmenü
 - [ ] 8. Telefonos app és távoli elérés
 - [ ] 9. Az eredeti távirányítók tesztje a végleges rendszer mellett
@@ -259,8 +244,7 @@ Az OLED és a BME280 tüskesor nélkül jött. Amikor odaérsz:
 - A tüskesort a **rövid végével** dugd a panelbe, a hosszú vég lefelé nézzen. Ha breadboardba tűzöd
   a tüskesort, és arra teszed a panelt, egyenes lesz.
 - Pákahegy kb. 330–350 °C, minden láb 2–3 másodperc. A jó forrasztás fényes kis kúp, nem gömb.
-- A **BME280-nál** nézd meg, hány lába van. Ha 6 (VCC, GND, SCL, SDA, CSB, SDO): a CSB menjen 3V3-ra
-  (I²C mód), az SDO GND-re (`0x76` cím) vagy 3V3-ra (`0x77`). Ha 4 lába van, nincs ilyen gond.
+- A **BME280** CSB és SDO lábát (ha van) nem kell bekötni, a modul magától I²C módban indul.
 - Figyelem: sok olcsó „BME280” valójában **BMP280**, amin nincs páratartalom-mérés. Az I²C-teszt
   kiírja majd a chip ID-t (`0x60` = BME280, `0x58` = BMP280).
 
