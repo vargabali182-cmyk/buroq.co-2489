@@ -229,7 +229,7 @@ Az `[A]` rész a RadioLibtől függetlenül, közvetlenül olvassa ki a chipet. 
 - [ ] **2. CC1101**: `VERSION = 0x14`, `radio.begin` OK
 - [ ] 3. Távirányító jelvizsgálata: `JEL!` jön gombnyomásra, utána a nyers jel rögzítése és dekódolása
 - [ ] 4. Adás és vétel próbája (visszajátszás, előbb a redőny közelében, kis teljesítménnyel)
-- [ ] 5. OLED + encoder beforrasztása, bekötése (GPIO8/9, 4/5/6, 7, **16**)
+- [ ] 5. OLED + encoder beforrasztása, bekötése (GPIO8/9, 4/5/6, 7, **16**) – teszt: `03_kijelzo_teszt`
 - [ ] 6. BME280 beforrasztása, bekötése (saját I²C: GPIO17/18)
 - [ ] 7. Helyi vezérlőmenü
 - [ ] 8. Telefonos app és távoli elérés
@@ -250,7 +250,34 @@ Az OLED és a BME280 tüskesor nélkül jött. Amikor odaérsz:
 
 ---
 
-## 7. Mi jön a 2. lépés után
+## 7. Kijelző és hőmérő teszt
+
+`firmware/03_kijelzo_teszt` – kell hozzá az **U8g2** könyvtár (Library Manager).
+
+Jó eredmény a Serial Monitoron:
+
+```
+I2C scan (kijelzo, SDA=8 SCL=9): 0x3C
+  -> Kijelzo megvan: 0x3C
+I2C scan (homero, SDA=17 SCL=18): 0x76
+  -> Homero megvan: cim 0x76, chip ID 0x60 = BME280 (OK)
+```
+
+A kijelzőn: felirat, `Encoder:` szám (forgatásra változik), három doboz PSH / CON / BAK
+(lenyomásra kitöltődik), a hőmérő típusa, alul egy futó csík.
+
+| Amit látsz | Mit csinálj |
+|---|---|
+| `kijelzo ... SEMMI` | VCC/GND, SDA↔SCL felcserélve?, forrasztás |
+| a scan 0x3C-t talál, de a kijelző sötét vagy szemetes | a sketch elején `USE_SH1106` → `0` |
+| az encoder rossz irányba számol | TRA és TRB kábelt cseréld meg |
+| egy kattanásra 2-t vagy fél lépést ugrik | szólj, átállítom a lépésosztót |
+| gomb nem reagál | az adott kábel / forrasztás |
+| `chip ID 0x58 = BMP280` | ez BMP280: hőmérséklet és légnyomás megy, páratartalom nincs |
+
+---
+
+## 8. Mi jön a 2. lépés után
 
 Ha a `JEL!` sorok megjönnek gombnyomásra, a következő sketch a CC1101-et **direkt (aszinkron) OOK
 módba** teszi, és rögzíti a távirányító impulzusidőit (fel/le mikroszekundumban). Ebből derül ki:
@@ -269,5 +296,6 @@ projects/okosotthon-redony/
 ├── README.md                              ← ez a fájl
 └── firmware/
     ├── 01_serial_test/01_serial_test.ino  ← 1. lépés: soros port
-    └── 02_cc1101_test/02_cc1101_test.ino  ← 2. lépés: CC1101 SPI + RSSI
+    ├── 02_cc1101_test/02_cc1101_test.ino  ← 2. lépés: CC1101 SPI + RSSI
+    └── 03_kijelzo_teszt/03_kijelzo_teszt.ino ← kijelző, encoder, gombok, BME280 felismerés
 ```
